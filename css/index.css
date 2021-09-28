@@ -1,0 +1,754 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url("https://p4.wallpaperbetter.com/wallpaper/238/702/429/abstract-texture-hd-4k-wallpaper-preview.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.header {
+  height: 100px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 calc(3.5vw + 5px);
+  z-index: 10;
+  transition: all 500ms;
+}
+
+.header.active {
+  background-color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.nav-image img {
+  width: 19rem;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+  font-weight: 400;
+  position: relative;
+}
+
+li a:before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  left: 0;
+  border: 2px solid red;
+  transform: scale(0);
+  transform-origin: left;
+  transition: transform 500ms;
+}
+
+li a:hover:before {
+  transform: scale(1);
+}
+
+li a:hover {
+  color: red;
+}
+
+li a.active {
+  color: red;
+}
+
+a.active::before {
+  transform: scale(1);
+}
+
+.upper {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+nav button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 1rem;
+  font-weight: 600;
+}
+
+nav button:hover {
+  color: black;
+}
+
+@media (max-width: 1140px) {
+  .header {
+    background-color: black;
+  }
+
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    left: 3rem;
+    top: 7rem;
+    align-items: flex-start;
+  }
+
+  nav ul li {
+    margin: 0.1rem 0;
+    font-size: 2rem;
+  }
+
+  li a.active {
+    color: #fff;
+  }
+
+  a.active::before {
+    transform: scale(0);
+  }
+
+  .header {
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    overflow: hidden;
+    transition: all 400ms;
+  }
+
+  .header.open {
+    height: 400px;
+  }
+
+  .upper {
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+
+  .bars {
+    width: 60px;
+    height: 60px;
+    margin-left: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 400ms;
+  }
+
+  .bars .line {
+    width: 40px;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    transition: all 400ms;
+  }
+
+  .line::before,
+  .line::after {
+    content: "";
+    width: 40px;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    transition: all 400ms;
+  }
+
+  .line::before {
+    transform: translateY(12px);
+  }
+
+  .line::after {
+    transform: translateY(-12px);
+  }
+
+  .bars.open .line {
+    background-color: transparent;
+  }
+
+  .bars.open .line::after {
+    transform: rotate(45deg);
+  }
+
+  .bars.open .line::before {
+    transform: rotate(-45deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-image img {
+    width: 16rem;
+  }
+
+  nav button {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .nav-image img {
+    width: 14rem;
+  }
+}
+
+/* slider paet  */
+
+.slide-show {
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 530px;
+}
+
+.slide h1 {
+  height: 520px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2.7rem;
+}
+
+.slide1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.657), rgba(0, 0, 0, 0.445)),
+    url("../images/slide1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slide2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.657), rgba(0, 0, 0, 0.445)),
+    url("../images/slide2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.657), rgba(0, 0, 0, 0.445)),
+    url("../images/slide3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slide4 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.657), rgba(0, 0, 0, 0.445)),
+    url("../images/slide4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.icons {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+.icons:hover {
+  background-color: rgba(102, 100, 100, 0.671);
+}
+
+.rigth {
+  position: absolute;
+  top: 40%;
+  right: 3%;
+}
+
+.left {
+  position: absolute;
+  top: 40%;
+  left: 3%;
+}
+
+@media (max-width: 1024px) {
+  .slide h1 {
+    font-size: 2.3rem;
+  }
+
+  .rigth,
+  .left {
+    top: 50%;
+  }
+
+  .slide h1 {
+    height: 590px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide h1 {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 630px) {
+  .slide h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .slide h1 {
+    font-size: 1.8rem;
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .slide h1 {
+    font-size: 1.4rem;
+  }
+}
+
+/* submit form part  */
+
+.form {
+  width: 30rem;
+  background-color: beige;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  padding: 2rem;
+  text-align: center;
+  z-index: 10;
+}
+
+.form.open {
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.form span {
+  position: absolute;
+  top: 6%;
+  right: 8%;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form h1 {
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+  color: red;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  outline: none;
+}
+
+form textarea {
+  margin-top: 0.5rem;
+  outline: none;
+  padding: 1rem;
+}
+
+form button {
+  padding: 0.9rem;
+  width: 9rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: none;
+}
+
+form button:hover {
+  background-color: red;
+}
+
+@media (max-width: 567px) {
+  .form {
+    width: 75%;
+  }
+}
+
+@media (max-width: 390px) {
+  form button {
+    padding: 0.7rem;
+    width: 7rem;
+    font-size: 0.7rem;
+  }
+
+  .form h1 {
+    font-size: 1.3rem;
+  }
+
+  .form span {
+    top: 5%;
+  }
+}
+
+/* overlay */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.678);
+  z-index: 1;
+  display: none;
+}
+
+.overlay.open {
+  display: block;
+}
+
+/* new food part   ***************************************/
+
+.new-food {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.new-food h1 {
+  color: white;
+}
+
+.new-food button {
+  margin-left: 2rem;
+  background-color: beige;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.new-food button:hover {
+  background-color: red;
+  color: white;
+}
+
+@media (max-width: 1026px) {
+  .new-food h1 {
+    font-size: 1.6rem;
+  }
+
+  .new-food button {
+    margin: 1rem 0;
+  }
+
+  .new-food {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .new-food button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* story part  **********************************/
+
+.story {
+  height: 500px;
+  background-image: url("../images/backgroundbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.story-wrap {
+  display: flex;
+}
+
+.story-text {
+  margin-left: 2rem;
+  flex: 1;
+}
+
+.story-text h1 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  color: red;
+  letter-spacing: 0.2rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.story-text h1::before {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  border: 2px solid black;
+  width: 5rem;
+}
+
+.story-text p {
+  max-width: 700px;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+.story-btn {
+  padding: 1.2rem;
+  margin-top: 2rem;
+  max-width: 17rem;
+  font-size: 1.1rem;
+  background-color: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.story-btn:hover {
+  background-color: red;
+}
+
+.story-image {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.story-image img {
+  transition: all 500ms;
+}
+
+.story-image img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 1026px) {
+  .story-wrap {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+
+  .story {
+    height: 740px;
+  }
+
+  .story-text {
+    margin: 2rem 0;
+  }
+
+  .story-text p {
+    max-width: 900px;
+  }
+
+  .story-image {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-wrap {
+    padding: 2rem 0;
+  }
+
+  .story {
+    height: 790px;
+  }
+}
+
+@media (max-width: 610px) {
+  .story-image img {
+    width: 100%;
+  }
+
+  nav button {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .story {
+    height: 810px;
+  }
+}
+
+.catring {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.657), rgba(0, 0, 0, 0.445)),
+    url("https://wallpaperaccess.com/full/767033.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 3rem;
+}
+
+.catring h1 {
+  color: #fff;
+  text-align: center;
+  padding: 4rem;
+  position: relative;
+}
+
+.catring h1:before {
+  position: absolute;
+  content: "";
+  bottom: 1.7rem;
+  right: 0;
+  left: 0;
+  border: 2px solid #fff;
+  width: 6rem;
+  margin: 0 auto;
+}
+
+.photos {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.photo {
+  width: 100%;
+  height: 16rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 4px solid #fff;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.photo:hover {
+  opacity: 0.8;
+}
+
+.photo:nth-child(1) {
+  background-image: url("https://lh3.googleusercontent.com/proxy/iFdqhpgo9GnwDeb2TWGFTSb6q_Q_otDgFNbHwJTdKG4PwWqANiYtvk2d2dkQUInwVXdLxnAZNxRoz2jqY7X5_cQiqbpXg4gn62wutn2LjFwrl4-PEE_DKqRgaTiOHYS8d7D6knMXLLetAC7T6Ejc-e9WS-NUN0WORNSKiYC9");
+}
+
+.photo:nth-child(2) {
+  background-image: url("https://topcareer.id/wp-content/uploads/2019/09/cropped-TraditionalfoodsinJava__HERO_shutterstock_1161085942-750x460.jpg");
+}
+
+.photo:nth-child(3) {
+  background-image: url("https://cdn.idntimes.com/content-images/community/2019/04/httpswwwdeliciouscomaurecipeschicken-satay-spicy-peanut-sauce-sate-ayamjhgkw4th-12be0f0cc1150bb2f4205e00ef3f005b_600x400.jpg");
+}
+
+.packag-btn {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.package {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.package:hover {
+  background-color: red;
+  color: white;
+}
+
+.photo .info-bg {
+  width: 13rem;
+  margin: -3rem 0;
+  height: 100vh;
+  background-color: rgb(224, 224, 224);
+  transform: translateX(-18rem);
+  transition: all 400ms;
+}
+
+.photo:hover .info-bg {
+  transform: translateX(0);
+}
+
+.info-text {
+  padding-top: 3rem;
+  padding-left: 1rem;
+}
+
+.info-text h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: black;
+}
+
+.info-text h4 {
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: black;
+}
+
+.info-text p {
+  color: black;
+  padding: 1.4rem 0;
+  font-weight: 600;
+}
